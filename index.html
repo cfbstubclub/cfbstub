@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Stub Club · CFB stadiums, teams and bowls you've seen</title>
+<meta name="description" content="Collect every college football stadium, team and bowl game you've seen in person. Pennants, ticket stubs and bowl pins for all 138 FBS programs.">
+<meta property="og:title" content="Stub Club">
+<meta property="og:description" content="Pennants for teams seen, ticket stubs for stadiums, pins for bowls. Track your college football collection.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpolygon points='4,6 60,32 4,58' fill='%23DE5A0C'/%3E%3Cpolygon points='4,6 12,10 12,54 4,58' fill='%2315201B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="logo" href="/" data-link>Stub <span>Club</span></a>
+    <nav class="topnav" id="topnav"></nav>
+  </div>
+  <header class="top">
+    <div class="brand">
+      <h1 id="brandTitle">Stub <span>Club</span></h1>
+      <p id="brandSub">FBS teams seen, stadiums visited and bowls attended · 2026 lineup, 138 teams</p>
+    </div>
+    <div class="counts num" id="counts"></div>
+  </header>
+
+  <div id="wallWrap">
+    <nav class="tabs" id="tabs">
+      <a href="#overview" data-v="overview">Overview</a>
+      <a href="#stadiums" data-v="stadiums">Stadiums</a>
+      <a href="#teams" data-v="teams">Teams</a>
+      <a href="#bowls" data-v="bowls">Bowls</a>
+    </nav>
+    <div id="banner"></div>
+    <div id="status" class="status" hidden></div>
+    <main id="view"></main>
+  </div>
+  <main id="page" hidden></main>
+
+  <footer class="foot"><span>Stub Club · cfbstub.club</span><span>Team names and colors are used to identify programs. Not affiliated with the NCAA, any conference or school.</span></footer>
+</div>
+
+<input type="file" id="restoreIn" accept="application/json,.json" hidden>
+<dialog id="mdlg"><form id="mform" method="dialog">
+  <h3 id="mTitle">Matchup</h3><p class="msub" id="mSub"></p>
+  <div class="mf" id="mVWrap"><label for="mV">Stadium</label><input id="mV" list="venueList" placeholder="Start typing a stadium or city" autocomplete="off"></div>
+  <div class="mf"><label for="mA" id="mALabel">Opponent</label><input id="mA" list="teamList" placeholder="Start typing a team" autocomplete="off"></div>
+  <div class="mf" id="mBWrap"><label for="mB">Team 2</label><input id="mB" list="teamList" placeholder="Start typing a team" autocomplete="off"></div>
+  <p class="mhint">Pick from the list, or type any team name for a non-FBS opponent.</p>
+  <datalist id="teamList"></datalist><datalist id="venueList"></datalist>
+  <label class="mchk"><input type="checkbox" id="mSeen" checked> Also mark these teams as seen</label>
+  <div class="macts"><button type="button" class="btn ghostdanger" id="mRemove">Remove this stub</button><span class="r"><button type="button" class="btn" id="mCancel">Cancel</button><button type="submit" class="btn primary" id="mSave">Save</button></span></div>
+</form></dialog>
+<div class="toast" id="toast" hidden><span id="toastMsg"></span><button id="undoBtn" hidden>Undo</button></div>
+
+<script src="/js/vendor/supabase.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/data.js"></script>
+<script src="/js/wall.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
