@@ -30,6 +30,11 @@ header.top{padding-bottom:14px;border-bottom:3px solid var(--ink)}
 .btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 13px;cursor:pointer;font-weight:500}
 .btn:hover{border-color:var(--ink)}
 .btn.primary{background:var(--pylon);color:var(--pylon-ink);border-color:var(--pylon);font-weight:600}
+.btn.google{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:11px 14px;background:#fff;color:#1f1f1f;border-color:#747775;font-weight:600}
+.btn.google:hover{background:#f6f6f6;border-color:#1f1f1f}
+.btn.google:disabled{opacity:.6;cursor:default}
+.or{display:flex;align-items:center;gap:10px;margin:6px 0 14px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.or::before,.or::after{content:"";flex:1;border-top:1px solid var(--line)}
 nav.tabs{display:flex;gap:4px;margin:14px 0 22px;overflow-x:auto;scrollbar-width:none}
 nav.tabs a{flex:none;text-decoration:none;color:var(--muted);font-family:var(--display);font-weight:600;font-size:19px;text-transform:uppercase;letter-spacing:.03em;padding:6px 12px;border-radius:6px}
 nav.tabs a:hover{color:var(--ink)}
