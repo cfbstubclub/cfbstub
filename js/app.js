@@ -96,10 +96,10 @@ async function route() {
 
   // home
   if (!session) { mode = "landing"; canEdit = false; showWall(true); counts(true);
-    setHeader("Stub <span>Club</span>", "FBS teams seen, stadiums visited and bowls attended · 2026 lineup, 138 teams"); render(); return; }
+    setHeader("CFB Stub <span>Club</span>", "FBS teams seen, stadiums visited and bowls attended · 2026 lineup, 138 teams"); render(); return; }
   if (!me) return go("/welcome");
   mode = "own"; canEdit = true; showWall(true); counts(true);
-  setHeader("Stub <span>Club</span>", `<span class="owner">Signed in as <b>@${esc(me.username)}</b>${me.is_public ? ` · public at <a href="/u/${esc(me.username)}" data-link>cfbstub.club/u/${esc(me.username)}</a>` : " · private"}</span>`);
+  setHeader("CFB Stub <span>Club</span>", `<span class="owner">Signed in as <b>@${esc(me.username)}</b>${me.is_public ? ` · public at <a href="/u/${esc(me.username)}" data-link>cfbstub.club/u/${esc(me.username)}</a>` : " · private"}</span>`);
   render();
 }
 
@@ -108,10 +108,10 @@ async function showPublic(username, token) {
   $("#view").innerHTML = ""; $("#banner").innerHTML = ""; setHeader("Loading…", "");
   const { data: prof, error: pErr } = await sb.from("profiles").select("id,username,display_name,is_public").eq("username", username).maybeSingle();
   if (token !== routeToken) return;
-  if (pErr) { mode = "missing"; showWall(false); setHeader("Stub <span>Club</span>", "");
+  if (pErr) { mode = "missing"; showWall(false); setHeader("CFB Stub <span>Club</span>", "");
     $("#page").innerHTML = `<section class="card"><h2>Couldn't load this wall</h2><p>Check your connection and reload the page.</p></section>`; return; }
   if (!prof || (!prof.is_public && !(session && prof.id === session.user.id))) {
-    mode = "missing"; showWall(false); counts(false); setHeader("Stub <span>Club</span>", "");
+    mode = "missing"; showWall(false); counts(false); setHeader("CFB Stub <span>Club</span>", "");
     $("#page").innerHTML = `<section class="card"><h2>Not found</h2><p>There's no public wall at <b>cfbstub.club/u/${esc(username)}</b>. It may be private or the name may be different.</p><a class="btn primary" href="/" data-link>Go to Stub Club</a></section>`;
     return;
   }
@@ -126,7 +126,7 @@ async function showPublic(username, token) {
 }
 
 function showLogin() {
-  mode = "login"; showWall(false); counts(false); setHeader("Stub <span>Club</span>", "Sign in or create your collection");
+  mode = "login"; showWall(false); counts(false); setHeader("CFB Stub <span>Club</span>", "Sign in or create your collection");
   $("#page").innerHTML = `<section class="card"><h2>Sign in</h2><p>New here? Either option creates your account.</p>
     <button class="btn google" type="button" id="googleBtn"><svg viewBox="0 0 48 48" width="18" height="18" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Continue with Google</button>
     <p class="err" id="googleErr"></p>
@@ -169,7 +169,7 @@ function wireUsernamePreview() { $("#uname").addEventListener("input", e => { $(
 
 function showOnboard() {
   if (me) return go("/");
-  mode = "onboard"; showWall(false); counts(false); setHeader("Stub <span>Club</span>", "Welcome — one quick step");
+  mode = "onboard"; showWall(false); counts(false); setHeader("CFB Stub <span>Club</span>", "Welcome — one quick step");
   $("#page").innerHTML = `<section class="card"><h2>Set up your wall</h2><p>Pick a username. You can change everything here later in Settings.</p>
     <form class="form" id="obForm">${profileFields(null, true)}<p class="err" id="obErr"></p><button class="btn primary" type="submit" id="obBtn">Create my wall</button></form></section>`;
   wireUsernamePreview();
@@ -202,7 +202,7 @@ function pickFile() {
 }
 
 function showSettings() {
-  mode = "settings"; showWall(false); counts(false); setHeader("Stub <span>Club</span>", "Settings");
+  mode = "settings"; showWall(false); counts(false); setHeader("CFB Stub <span>Club</span>", "Settings");
   const link = `${cfg.siteUrl}/u/${me.username}`;
   $("#page").innerHTML = `<section class="card"><h2>Settings</h2><p>Signed in as ${esc(session.user.email || "")}.</p>
     <form class="form" id="setForm">${profileFields(me, false)}<p class="err" id="setErr"></p><button class="btn primary" type="submit" id="setBtn">Save changes</button></form>
