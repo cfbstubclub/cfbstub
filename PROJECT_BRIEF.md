@@ -17,7 +17,7 @@ No dates or game log by design. Optional matchup per stub (e.g. ASU vs ARIZ), wi
 | Hosting | Netlify project `cfbstubclub` (cfbstubclub.netlify.app), public, HTTPS via Let's Encrypt |
 | DNS (Porkbun) | ALIAS @ → apex-loadbalancer.netlify.com; CNAME www → cfbstubclub.netlify.app; MX/TXT for email forwarding |
 | Database + sign-in | Supabase project `rrcngzlecsyxbjdvrcvq`. Tables `profiles` and `collections` with row-level security (`supabase/schema.sql`) |
-| Auth | Email magic link working. Site URL https://cfbstub.club; redirect URLs for cfbstub.club and the netlify.app address |
+| Auth | Email magic link + Google sign-in working. Google Cloud project `cfbstub` (owner hello@cfbstub.club), OAuth app in production; domain verified in Search Console (TXT record at Porkbun). Site URL https://cfbstub.club; redirect URLs for cfbstub.club and the netlify.app address |
 | Anonymity | All accounts use hello@cfbstub.club / GitHub `cfbstubclub`; commits signed as cfbstubclub |
 
 ## Code map
@@ -26,19 +26,19 @@ No dates or game log by design. Optional matchup per stub (e.g. ASU vs ARIZ), wi
 - `js/data.js`: teams, stadiums, neutral venues, bowls
 - `js/wall.js`: pennants, stubs, pins, tapping, matchups, export/restore
 - `js/app.js`: sign-in, profiles, public pages (`/u/username`), settings, saving
-- `_redirects`: Netlify serves all paths from index.html
+- `_redirects`: Netlify serves all paths from index.html (real files like /privacy/ are served first)
+- `privacy/`, `terms/`: static policy pages, linked from the footer
 
 ## Status (Oct 2, 2026)
-Done: domain, hosting, HTTPS, database, email sign-in tested end to end on cfbstub.club, own wall saving.
+Done: domain, hosting, HTTPS, database, email sign-in, Google sign-in (tested end to end), own wall saving, privacy + terms pages, logo (cream "Admit One" stub on field green).
 
-In progress: **Google sign-in**. Part 1: create a Google account using hello@cfbstub.club (not personal Gmail), then a Google Cloud project named `cfbstub`. Remaining parts: OAuth consent screen (app name, logo), OAuth client ID with Supabase callback URL, paste client ID/secret into Supabase → Authentication → Providers → Google, then add the "Continue with Google" button to the code.
+Pending: **Google branding verification**. Domain verified Oct 2 evening; on/after Oct 3 ~9:30pm, Google Auth Platform → Branding → "I have fixed the issues" → Proceed. Until approved, the Google screen says "continue to rrcngzlecsyxbjdvrcvq.supabase.co" with no logo (permanent fix: Supabase custom domain, paid).
 
 ## Next up
-1. Finish Google sign-in
-2. Own email sender (SMTP) in Supabase so sign-in emails aren't rate-limited
-3. Bowl photos (Supabase storage)
-4. v2 social: follow + activity feed + reactions; v3 stadium guide (tips/ratings, stub holders only). No open message board; link a Discord instead
-5. Apple sign-in later if users ask (needs paid Apple developer account, secret renews every 6 months)
+1. Own email sender (SMTP) in Supabase so sign-in emails aren't rate-limited
+2. Bowl photos (Supabase storage)
+3. v2 social: follow + activity feed + reactions; v3 stadium guide (tips/ratings, stub holders only). No open message board; link a Discord instead
+4. Apple sign-in later if users ask (needs paid Apple developer account, secret renews every 6 months)
 
 ## Decisions log
 - Name: Stub Club. Domain cfbstub.club over cfbstubs.club
