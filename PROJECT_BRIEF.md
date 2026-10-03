@@ -32,7 +32,7 @@ No dates or game log by design. Optional matchup per stub (e.g. ASU vs ARIZ), wi
 ## Status (Oct 2, 2026)
 Done: domain, hosting, HTTPS, database, email sign-in, Google sign-in (tested end to end), own wall saving, privacy + terms pages, logo (cream "Admit One" stub on field green).
 
-Pending: **Google branding verification**. Domain verified Oct 2 evening; on/after Oct 3 ~9:30pm, Google Auth Platform → Branding → "I have fixed the issues" → Proceed. Until approved, the Google screen says "continue to rrcngzlecsyxbjdvrcvq.supabase.co" with no logo (permanent fix: Supabase custom domain, paid).
+Google branding verified Oct 2, 2026 (app name + logo shown on the Google sign-in screen). The redirect domain may still show rrcngzlecsyxbjdvrcvq.supabase.co; permanent fix is a Supabase custom domain (paid), low priority.
 
 ## Next up
 1. Own email sender (SMTP) in Supabase so sign-in emails aren't rate-limited
