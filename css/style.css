@@ -222,3 +222,6 @@ a.btn{text-decoration:none;display:inline-block}
 .foot a{color:inherit;text-decoration:underline}
 /* iPhone Safari zooms the page when a form field's text is under 16px, and stays zoomed after. */
 input,select,textarea{font-size:16px}
+/* The top-left logo is the visible name; the big title stays for screen readers and search engines only. */
+#brandTitle{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.brand p{margin-top:2px}
